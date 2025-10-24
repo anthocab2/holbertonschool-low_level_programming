@@ -1,0 +1,22 @@
+#include "main.h"
+
+/**
+ * print_line - draws a straight line using '_'
+ * @n: number of times to print '_'
+ */
+void print_line(int n)
+{
+int i;
+
+if (n <= 0)
+{
+_putchar('\n');  /* solo salto de línea si n <= 0 */
+return;
+}
+
+for (i = 0; i < n; i++)
+{
+_putchar('_');   /* imprime '_' n veces */
+}
+_putchar('\n');       /* salto de línea al final */
+}
