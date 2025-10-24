@@ -5,4 +5,6 @@ int _putchar(char c);
 int _isupper(int c); /* prototipo para 0-isupper */
 int _isdigit(int c);
 int mul(int a, int b);
+void print_numbers(void);
+
 #endif /* MAIN_H */
