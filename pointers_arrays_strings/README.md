@@ -1,0 +1,2 @@
+This project is part of the Holberton School low-level programming track.  
+It introduces **pointers**, **arrays**, and **strings** in C — three fundamental concepts in memory management and data manipulation.
