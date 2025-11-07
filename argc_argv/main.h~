@@ -1,0 +1,6 @@
+#ifndef MAIN_H
+#define MAIN_H
+
+int _putchar(char c); /* prototipo de _putchar, por si lo necesitas en otros ejercicios */
+
+#endif /* MAIN_H */
