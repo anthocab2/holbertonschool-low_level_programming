@@ -9,8 +9,6 @@
 */
 int main(int argc, char *argv[] __attribute__((unused)))
 {
-/* Restamos 1 si quieres no contar el nombre del programa
-pero según el output dado, cuentan todos los argumentos */
 printf("%d\n", argc - 1);
 return (0);
 }
