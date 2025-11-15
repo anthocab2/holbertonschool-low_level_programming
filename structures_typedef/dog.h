@@ -6,9 +6,6 @@
  * @name: nombre del perro
  * @age: edad del perro
  * @owner: dueño del perro
- *
- * Descripción: Define un tipo de estructura para representar un perro,
- * incluyendo su nombre, edad y dueño.
  */
 struct dog
 {
@@ -16,5 +13,8 @@ struct dog
 	float age;
 	char *owner;
 };
+
+/* Prototipo de init_dog */
+void init_dog(struct dog *d, char *name, float age, char *owner);
 
 #endif /* DOG_H */
