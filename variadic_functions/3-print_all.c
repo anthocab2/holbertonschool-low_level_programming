@@ -3,8 +3,8 @@
 #include "variadic_functions.h"
 
 /**
-* print_all - prints anything based on format string
-* @format: string with types: c (char), i (int), f (float), s (char *)
+* print_all - prints any type based on format string
+* @format: string with types: c, i, f, s
 */
 void print_all(const char * const format, ...)
 {
@@ -14,8 +14,12 @@ char *str;
 char *sep = "";
 
 va_start(args, format);
-while (format && format[i])
+if (format)
 {
+while (format[i])
+{
+if (format[i] == 'c' || format[i] == 'i' || format[i] == 'f' || format[i] == 's')
+            {
 if (format[i] == 'c')
 printf("%s%c", sep, va_arg(args, int));
 if (format[i] == 'i')
@@ -30,7 +34,9 @@ str = "(nil)";
 printf("%s%s", sep, str);
 }
 sep = ", ";
+}
 i++;
+}
 }
 va_end(args);
 printf("\n");
