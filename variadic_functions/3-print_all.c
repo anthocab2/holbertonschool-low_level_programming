@@ -2,42 +2,72 @@
 #include <stdarg.h>
 #include "variadic_functions.h"
 
-/**
-* print_all - prints any type based on format string
-* @format: string with types: c, i, f, s
-*/
+/* Struct to map type to its print function */
+typedef struct printer
+{
+char type;
+void (*f)(va_list);
+} printer_t;
+
+/* Print functions for each type */
+void print_char(va_list args)
+{
+printf("%c", va_arg(args, int));
+}
+
+void print_int(va_list args)
+{
+printf("%d", va_arg(args, int));
+}
+
+void print_float(va_list args)
+{
+printf("%f", va_arg(args, double));
+}
+
+void print_string(va_list args)
+{
+char *str = va_arg(args, char *);
+if (!str)
+str = "(nil)";
+printf("%s", str);
+}
+
+/* Main function for task 3 */
 void print_all(const char * const format, ...)
 {
 va_list args;
-unsigned int i = 0;
-char *str;
+unsigned int i = 0, j;
 char *sep = "";
 
+printer_t printers[] = {
+{'c', print_char},
+{'i', print_int},
+{'f', print_float},
+{'s', print_string}
+};
+
 va_start(args, format);
-if (format)
+
+if (format) /* primer if */
 {
 while (format[i])
 {
-if (format[i] == 'c' || format[i] == 'i' || format[i] == 'f' || format[i] == 's')
-            {
-if (format[i] == 'c')
-printf("%s%c", sep, va_arg(args, int));
-if (format[i] == 'i')
-printf("%s%d", sep, va_arg(args, int));
-if (format[i] == 'f')
-printf("%s%f", sep, va_arg(args, double));
-if (format[i] == 's')
+j = 0;
+while (j < 4)
 {
-str = va_arg(args, char *);
-if (!str)
-str = "(nil)";
-printf("%s%s", sep, str);
-}
+if (format[i] == printers[j].type) /* segundo if */
+{
+printf("%s", sep);
+printers[j].f(args);
 sep = ", ";
+}
+j++;
 }
 i++;
 }
 }
+
 va_end(args);
 printf("\n");
 }
