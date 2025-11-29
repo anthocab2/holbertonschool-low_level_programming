@@ -2,20 +2,38 @@
 #include <stdio.h>
 #include "lists.h"
 
-**
-* main - check add_node_end
-*
-* Return: Always 0.
-*/
+/**
+ * main - check add_node_end
+ *
+ * Return: Always 0.
+ */
 int main(void)
 {
 list_t *head = NULL;
+list_t *temp;
 
 add_node_end(&head, "Hello");
 add_node_end(&head, "World");
 
-print_list(head);
+/* recorrer manualmente e imprimir */
+temp = head;
+while (temp)
+{
+if (temp->str)
+printf("[%u] %s\n", temp->len, temp->str);
+else
+printf("[0] (nil)\n");
+temp = temp->next;
+}
 
-free_list(head);
-return (0);
+/* liberar memoria */
+while (head)
+{
+temp = head->next;
+free(head->str);
+free(head);
+head = temp;
+}
+
+return 0;
 }
