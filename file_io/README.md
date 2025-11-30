@@ -1,0 +1,2 @@
+This directory contains C programs that demonstrate how to use file descriptors and system calls in Linux.  
+The main focus is on creating, opening, reading, writing, and closing files using the allowed system calls.
